@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Hugo
+        run: |
+          sudo apt update -y
+          wget https://github.com/gohugoio/hugo/releases/download/v0.133.1/hugo_0.133.1_linux-amd64.deb
+          wget https://github.com/gohugoio/hugo/releases/download/v0.133.1/hugo_extended_0.133.1_linux-amd64.deb
+          sudo dpkg -i hugo_0.133.1_linux-amd64.deb
+          sudo dpkg -i hugo_extended_0.133.1_linux-amd64.deb          
+
+      - name: Generate and Publish
+        run: |
+          git clone https://${{secrets.TOKEN}}@github.com/NotHimmel/blog
+          cd blog
+          hugo -D           
+          git add .
+          git commit -m "Update Site at $(date "+%Y%m%d-%H%M%S")"
+          git remote add origin https://${{secrets.TOKEN}}@github.com/NotHimmel/blog
+          git push --force -u origin main
+     
