@@ -1,8 +1,8 @@
 baseURL = "http://himmelovo.fun/"
 DefaultContentLanguage = "zh" # Theme's display language, supports: en, fr, zh, zh-hant
 languageCode = "zh-cn"
-title = "A Hugo Site"
-copyright = "This is a customized copyright."
+title = "Steins Gate"
+copyright = "El Psy Kongroo"
 theme = "diary"
 
 [markup]
@@ -14,13 +14,15 @@ theme = "diary"
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "perldoc"
+    style = "manni"
     tabWidth = 4
 
 [params]
 subtitle = "Themed by Diary."
+enableReadingTime=true
 enableGitalk = false
-enableGiscus = true
+#LiveRe
+livereId = "MTAyMC82MDEwMC8zNjU2Ng=="
 
 # Microsoft Clarity (https://clarity.microsoft.com/) is a free user behavior recording and analytics tool
 clarity = "abcdefghzd"
@@ -75,6 +77,10 @@ url = "/posts"
 name = "Archive"
 weight = 1
 [[menu.main]]
+url = "/tags"
+name = "Other"
+weight = 4
+[[menu.main]]
 url = "/index.xml"
 name = "RSS Feed"
-weight = 4
+weight = 5
